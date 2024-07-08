@@ -1,4 +1,4 @@
-// CommMFCDlg.cpp : ÊµÏÖÎÄ¼ş
+// CommMFCDlg.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -9,20 +9,20 @@
 #define new DEBUG_NEW
 #endif
 
-// ÓÃÓÚÓ¦ÓÃ³ÌĞò¡°¹ØÓÚ¡±²Ëµ¥ÏîµÄ CAboutDlg ¶Ô»°¿ò
+// ç”¨äºåº”ç”¨ç¨‹åºâ€œå…³äºâ€èœå•é¡¹çš„ CAboutDlg å¯¹è¯æ¡†
 
 class CAboutDlg : public CDialog
 {
 public:
 	CAboutDlg();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_ABOUTBOX };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
-// ÊµÏÖ
+// å®ç°
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -40,7 +40,7 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
 
-// CCommMFCDlg ¶Ô»°¿ò
+// CCommMFCDlg å¯¹è¯æ¡†
 
 
 
@@ -85,15 +85,15 @@ BEGIN_MESSAGE_MAP(CCommMFCDlg, CDialog)
     END_MESSAGE_MAP()
 
 
-// CCommMFCDlg ÏûÏ¢´¦Àí³ÌĞò
+// CCommMFCDlg æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CCommMFCDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	// ½«¡°¹ØÓÚ...¡±²Ëµ¥ÏîÌí¼Óµ½ÏµÍ³²Ëµ¥ÖĞ¡£
+	// å°†â€œå…³äº...â€èœå•é¡¹æ·»åŠ åˆ°ç³»ç»Ÿèœå•ä¸­ã€‚
 
-	// IDM_ABOUTBOX ±ØĞëÔÚÏµÍ³ÃüÁî·¶Î§ÄÚ¡£
+	// IDM_ABOUTBOX å¿…é¡»åœ¨ç³»ç»Ÿå‘½ä»¤èŒƒå›´å†…ã€‚
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
@@ -109,23 +109,23 @@ BOOL CCommMFCDlg::OnInitDialog()
 		}
 	}
 
-	// ÉèÖÃ´Ë¶Ô»°¿òµÄÍ¼±ê¡£µ±Ó¦ÓÃ³ÌĞòÖ÷´°¿Ú²»ÊÇ¶Ô»°¿òÊ±£¬¿ò¼Ü½«×Ô¶¯
-	//  Ö´ĞĞ´Ë²Ù×÷
-	SetIcon(m_hIcon, TRUE);			// ÉèÖÃ´óÍ¼±ê
-	SetIcon(m_hIcon, FALSE);		// ÉèÖÃĞ¡Í¼±ê
+	// è®¾ç½®æ­¤å¯¹è¯æ¡†çš„å›¾æ ‡ã€‚å½“åº”ç”¨ç¨‹åºä¸»çª—å£ä¸æ˜¯å¯¹è¯æ¡†æ—¶ï¼Œæ¡†æ¶å°†è‡ªåŠ¨
+	//  æ‰§è¡Œæ­¤æ“ä½œ
+	SetIcon(m_hIcon, TRUE);			// è®¾ç½®å¤§å›¾æ ‡
+	SetIcon(m_hIcon, FALSE);		// è®¾ç½®å°å›¾æ ‡
 
-	// TODO: ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–ä»£ç 
 
 	rx = 0;
 	tx = 0;
 	m_recvCountCtrl.SetWindowText(CString("0"));
 	m_sendCountCtrl.SetWindowText(CString("0"));
 
-	// Ä¬ÈÏ½ÓÊÕ³¬Ê±Ê±¼ä(ºÁÃë)
+	// é»˜è®¤æ¥æ”¶è¶…æ—¶æ—¶é—´(æ¯«ç§’)
 	m_ReceiveTimeoutMSCtrl.SetWindowText(_T("0"));
 
 	CString temp;
-	//Ìí¼Ó²¨ÌØÂÊµ½ÏÂÀ­ÁĞ±í
+	//æ·»åŠ æ³¢ç‰¹ç‡åˆ°ä¸‹æ‹‰åˆ—è¡¨
     int BaudRateArray[] = {300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 38400, 56000, 57600, 115200};
 	for (int i = 0; i < sizeof(BaudRateArray) / sizeof(int); i++)
 	{
@@ -136,7 +136,7 @@ BOOL CCommMFCDlg::OnInitDialog()
 	temp.Format(_T("%d"), 9600);
 	m_BaudRate.SetCurSel(m_BaudRate.FindString(0, temp));
 
-	//Ğ£ÑéÎ»
+	//æ ¡éªŒä½
     std::string ParityArray[] = {"None", "Odd", "Even", "Mark", "Space"};
 	for (int i = 0; i < sizeof(ParityArray) / sizeof(std::string); i++)
 	{
@@ -149,7 +149,7 @@ BOOL CCommMFCDlg::OnInitDialog()
 	}
 	m_Parity.SetCurSel(0);
 
-	//Êı¾İÎ»
+	//æ•°æ®ä½
     std::string DataBitsArray[] = {"5", "6", "7", "8"};
 	for (int i = 0; i < sizeof(DataBitsArray) / sizeof(std::string); i++)
 	{
@@ -162,7 +162,7 @@ BOOL CCommMFCDlg::OnInitDialog()
 	}
 	m_DataBits.SetCurSel(3);
 
-	//Í£Ö¹Î»
+	//åœæ­¢ä½
     std::string StopArray[] = {"1", "1.5", "2"};
 	for (int i = 0; i < sizeof(StopArray) / sizeof(std::string); i++)
 	{
@@ -175,7 +175,7 @@ BOOL CCommMFCDlg::OnInitDialog()
 	}
 	m_Stop.SetCurSel(0);
 
-	//»ñÈ¡´®¿ÚºÅ
+	//è·å–ä¸²å£å·
 	std::vector<SerialPortInfo> m_portsList = CSerialPortInfo::availablePortInfos();
 	TCHAR m_regKeyValue[256];
 	for (size_t i = 0; i < m_portsList.size(); i++)
@@ -198,7 +198,7 @@ BOOL CCommMFCDlg::OnInitDialog()
 
 	m_SerialPort.connectReadEvent(this);
 	
-	return TRUE;  // ³ı·Ç½«½¹µãÉèÖÃµ½¿Ø¼ş£¬·ñÔò·µ»Ø TRUE
+	return TRUE;  // é™¤éå°†ç„¦ç‚¹è®¾ç½®åˆ°æ§ä»¶ï¼Œå¦åˆ™è¿”å› TRUE
 }
 
 void CCommMFCDlg::OnSysCommand(UINT nID, LPARAM lParam)
@@ -214,19 +214,19 @@ void CCommMFCDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// Èç¹ûÏò¶Ô»°¿òÌí¼Ó×îĞ¡»¯°´Å¥£¬ÔòĞèÒªÏÂÃæµÄ´úÂë
-//  À´»æÖÆ¸ÃÍ¼±ê¡£¶ÔÓÚÊ¹ÓÃÎÄµµ/ÊÓÍ¼Ä£ĞÍµÄ MFC Ó¦ÓÃ³ÌĞò£¬
-//  Õâ½«ÓÉ¿ò¼Ü×Ô¶¯Íê³É¡£
+// å¦‚æœå‘å¯¹è¯æ¡†æ·»åŠ æœ€å°åŒ–æŒ‰é’®ï¼Œåˆ™éœ€è¦ä¸‹é¢çš„ä»£ç 
+//  æ¥ç»˜åˆ¶è¯¥å›¾æ ‡ã€‚å¯¹äºä½¿ç”¨æ–‡æ¡£/è§†å›¾æ¨¡å‹çš„ MFC åº”ç”¨ç¨‹åºï¼Œ
+//  è¿™å°†ç”±æ¡†æ¶è‡ªåŠ¨å®Œæˆã€‚
 
 void CCommMFCDlg::OnPaint()
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // ÓÃÓÚ»æÖÆµÄÉè±¸ÉÏÏÂÎÄ
+		CPaintDC dc(this); // ç”¨äºç»˜åˆ¶çš„è®¾å¤‡ä¸Šä¸‹æ–‡
 
 		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-		// Ê¹Í¼±êÔÚ¹¤×÷Çø¾ØĞÎÖĞ¾ÓÖĞ
+		// ä½¿å›¾æ ‡åœ¨å·¥ä½œåŒºçŸ©å½¢ä¸­å±…ä¸­
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
@@ -234,7 +234,7 @@ void CCommMFCDlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// »æÖÆÍ¼±ê
+		// ç»˜åˆ¶å›¾æ ‡
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
@@ -243,8 +243,8 @@ void CCommMFCDlg::OnPaint()
 	}
 }
 
-//µ±ÓÃ»§ÍÏ¶¯×îĞ¡»¯´°¿ÚÊ±ÏµÍ³µ÷ÓÃ´Ëº¯ÊıÈ¡µÃ¹â±ê
-//ÏÔÊ¾¡£
+//å½“ç”¨æˆ·æ‹–åŠ¨æœ€å°åŒ–çª—å£æ—¶ç³»ç»Ÿè°ƒç”¨æ­¤å‡½æ•°å–å¾—å…‰æ ‡
+//æ˜¾ç¤ºã€‚
 HCURSOR CCommMFCDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
@@ -255,10 +255,10 @@ void CCommMFCDlg::OnBnClickedButtonOpenClose()
     if (m_SerialPort.isOpen())
 	{
 		m_SerialPort.close();
-		m_OpenCloseCtrl.SetWindowText(_T("´ò¿ª´®¿Ú"));///ÉèÖÃ°´Å¥ÎÄ×ÖÎª"´ò¿ª´®¿Ú"
+		m_OpenCloseCtrl.SetWindowText(_T("æ‰“å¼€ä¸²å£"));///è®¾ç½®æŒ‰é’®æ–‡å­—ä¸º"æ‰“å¼€ä¸²å£"
 	}
-	///´ò¿ª´®¿Ú²Ù×÷
-	else if (m_PortNr.GetCount() > 0)///µ±Ç°ÁĞ±íµÄÄÚÈİ¸öÊı
+	///æ‰“å¼€ä¸²å£æ“ä½œ
+	else if (m_PortNr.GetCount() > 0)///å½“å‰åˆ—è¡¨çš„å†…å®¹ä¸ªæ•°
 	{
         char portName[256] = {0};
 		int SelBaudRate;
@@ -291,17 +291,17 @@ void CCommMFCDlg::OnBnClickedButtonOpenClose()
 
 		if (m_SerialPort.isOpen())
 		{
-			m_OpenCloseCtrl.SetWindowText(_T("¹Ø±Õ´®¿Ú"));
+			m_OpenCloseCtrl.SetWindowText(_T("å…³é—­ä¸²å£"));
 		}
 		else
 		{
-            m_OpenCloseCtrl.SetWindowText(_T("´ò¿ª´®¿Ú"));
-			AfxMessageBox(_T("´®¿ÚÒÑ±»Õ¼ÓÃ£¡"));
+            m_OpenCloseCtrl.SetWindowText(_T("æ‰“å¼€ä¸²å£"));
+			AfxMessageBox(_T("ä¸²å£å·²è¢«å ç”¨ï¼"));
 		}
 	}
 	else
 	{
-		AfxMessageBox(_T("Ã»ÓĞ·¢ÏÖ´®¿Ú£¡"));
+		AfxMessageBox(_T("æ²¡æœ‰å‘ç°ä¸²å£ï¼"));
 	}
 }
 
@@ -309,9 +309,9 @@ void CCommMFCDlg::OnBnClickedButtonOpenClose()
 void CCommMFCDlg::OnBnClickedButtonSend()
 {
 	GetDlgItem(IDC_SendEdit)->SetFocus();
-    if (!m_SerialPort.isOpen()) ///Ã»ÓĞ´ò¿ª´®¿Ú
+    if (!m_SerialPort.isOpen()) ///æ²¡æœ‰æ‰“å¼€ä¸²å£
 	{
-		AfxMessageBox(_T("ÇëÊ×ÏÈ´ò¿ª´®¿Ú"));
+		AfxMessageBox(_T("è¯·é¦–å…ˆæ‰“å¼€ä¸²å£"));
 		return;
 	}
 
@@ -320,7 +320,7 @@ void CCommMFCDlg::OnBnClickedButtonSend()
 	int len = 0;
 	char* m_str = NULL;
 #ifdef UNICODE
-	// ¼æÈİÖĞÎÄ
+	// å…¼å®¹ä¸­æ–‡
 	CStringA strA(temp);
 	len = strA.GetLength();
 	m_str = strA.GetBuffer();

@@ -1,4 +1,4 @@
-// CommMFCDlg.h : Í·ÎÄ¼ş
+// CommMFCDlg.h : å¤´æ–‡ä»¶
 //
 
 #pragma once
@@ -12,27 +12,27 @@ using namespace itas109;
 //About CSerialPort end
 
 
-// CCommMFCDlg ¶Ô»°¿ò
+// CCommMFCDlg å¯¹è¯æ¡†
 class CCommMFCDlg : public CDialog, public CSerialPortListener // About CSerialPort 
 {
-// ¹¹Ôì
+// æ„é€ 
 public:
-	CCommMFCDlg(CWnd* pParent = NULL);	// ±ê×¼¹¹Ôìº¯Êı
+	CCommMFCDlg(CWnd* pParent = NULL);	// æ ‡å‡†æ„é€ å‡½æ•°
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_COMMMFC_DIALOG };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV æ”¯æŒ
 
 	void onReadEvent(const char *portName, unsigned int readBufferLen); // About CSerialPort
 
 
-// ÊµÏÖ
+// å®ç°
 protected:
 	HICON m_hIcon;
 
-	// Éú³ÉµÄÏûÏ¢Ó³Éäº¯Êı
+	// ç”Ÿæˆçš„æ¶ˆæ¯æ˜ å°„å‡½æ•°
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
