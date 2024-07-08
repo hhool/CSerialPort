@@ -10,6 +10,12 @@
 
 #include <vector>
 
+#if defined(_DEBUG) && defined(_MSC_VER) && defined(_WIN32)
+#define _CRTDBG_MAP_ALLOC
+#include <crtdbg.h>
+#endif
+#include <signal.h>
+
 #include "CSerialPort/SerialPort.h"
 #include "CSerialPort/SerialPortInfo.h"
 using namespace itas109;
@@ -67,8 +73,29 @@ private:
     CSerialPort *p_sp;
 };
 
+static bool g_signal_ = false;
+
+static void HandleSig(int signo)
+{
+    printf("stop application");
+    g_signal_ = true;
+}
+
 int main()
 {
+#if defined(_DEBUG) && defined(_MSC_VER) && defined(_WIN32)
+    int Flag = _CrtSetDbgFlag(_CRTDBG_REPORT_FLAG);
+    Flag |= _CRTDBG_LEAK_CHECK_DF;
+    _CrtSetDbgFlag(Flag);
+    // _CrtSetBreakAlloc(66);
+#endif
+    signal(SIGINT, HandleSig);
+    signal(SIGTERM, HandleSig);
+#if defined(WIN32)
+    signal(SIGBREAK, HandleSig);
+#else
+    signal(SIGKILL, HandleSig);
+#endif
     CSerialPort sp;
     printf("Version: %s\n\n", sp.getVersion());
 
@@ -143,6 +170,10 @@ int main()
         for (;;)
         {
             imsleep(1);
+            if (g_signal_)
+            {
+                break;
+            }
         }
     }
 
