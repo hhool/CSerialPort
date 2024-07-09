@@ -44,6 +44,9 @@ list(APPEND CSerialPortVirtualSourceFiles CSerialPortVirtual.cpp)
 add_executable(${PROJECT_NAME} cseiralport_test.cpp ${CSerialPortSourceFiles} ${CSerialPortVirtualSourceFiles})
 target_link_libraries( ${PROJECT_NAME} gtest)
 
+add_subdirectory(benchmark)
+add_subdirectory(crc)
+
 if (WIN32)
     # for function availableFriendlyPorts
     target_link_libraries( ${PROJECT_NAME} setupapi)
