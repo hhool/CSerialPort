@@ -32,6 +32,12 @@ option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 option(CSERIALPORT_BUILD_EXAMPLES "Build CSerialPort examples" ON)
 option(CSERIALPORT_BUILD_DOC "Build CSerialPort Doc" OFF)
 option(CSERIALPORT_BUILD_TEST "Build CSerialPort Test" OFF)
+option(USE_UNICODE "Use unicode" ON)
+
+if(USE_UNICODE)
+    # this line is for UNICODE release,which is required by DuiDesigner
+    add_definitions(-DUNICODE -D_UNICODE)
+endif()
 
 # only build library if add CSeiralPort as subdirectory
 if (NOT CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
